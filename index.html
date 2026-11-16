@@ -1,0 +1,152 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f5f7f4">
+  <title>BZK — Your money, in view</title>
+
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Northstar home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24">
+            <path d="M12 3.5 14.1 9.9 20.5 12l-6.4 2.1L12 20.5l-2.1-6.4L3.5 12l6.4-2.1L12 3.5Z"/>
+            <circle cx="12" cy="12" r="2"/>
+          </svg>
+        </span>
+        Northstar
+      </a>
+
+      <div class="topbar-right">
+        <div class="secure-label">
+          <span aria-hidden="true">●</span> Your account is secure
+        </div>
+        <div class="profile">
+          <span class="avatar" aria-hidden="true">OH</span>
+          <span class="profile-name">Okkar Hein</span>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="welcome-row" aria-labelledby="welcome-title">
+        <div>
+          <p class="eyebrow">Personal banking</p>
+          <h1 id="welcome-title">Good morning, Okkar</h1>
+          <p class="welcome-copy">Here’s what’s happening with your money.</p>
+        </div>
+        <time class="date-label" id="today-date"></time>
+      </section>
+
+      <section class="overview" aria-label="Account overview and money actions">
+        <article class="balance-card">
+          <div class="balance-top">
+            <span class="balance-caption">Available balance</span>
+            <span class="account-tag">EVERYDAY ·· 4829</span>
+          </div>
+
+          <p class="balance-amount" id="balance">120,000,000 MMK</p>
+
+          <div class="account-number">
+            MMK <span aria-hidden="true">·</span> Checking account
+          </div>
+
+          <div class="balance-bottom">
+            <span>Account holder</span>
+            <strong>Okkar Hein</strong>
+          </div>
+        </article>
+
+        <article class="action-card">
+          <h2>Move your money</h2>
+          <p>Make a deposit or withdraw funds.</p>
+
+          <div class="action-buttons">
+            <button class="action-button" id="deposit-button" type="button">
+              <svg width="15" height="15" viewBox="0 0 20 20" aria-hidden="true">
+                <path d="M10 15V5m0 0L6 9m4-4 4 4M4 16h12"/>
+              </svg>
+              Deposit
+            </button>
+
+            <button class="action-button secondary" id="withdraw-button" type="button">
+              <svg width="15" height="15" viewBox="0 0 20 20" aria-hidden="true">
+                <path d="M10 5v10m0 0 4-4m-4 4-4-4M4 4h12"/>
+              </svg>
+              Withdraw
+            </button>
+          </div>
+
+          <div class="quick-label">Quick amount</div>
+
+          <div class="quick-amounts" aria-label="Choose a quick amount">
+            <button class="quick-amount" type="button" data-amount="10000" aria-pressed="false">10,000 K</button>
+            <button class="quick-amount" type="button" data-amount="50000" aria-pressed="false">50,000 K</button>
+            <button class="quick-amount" type="button" data-amount="100000" aria-pressed="false">100,000 K</button>
+        </div>
+        </article>
+      </section>
+
+      <section class="content-grid" aria-label="Account activity">
+        <article class="panel">
+          <div class="panel-heading history-heading">
+            <h2>Recent activity</h2>
+
+            <div class="filter-group" role="group" aria-label="Filter transactions">
+              <button class="filter-button active" type="button" data-filter="all" aria-pressed="true">All</button>
+              <button class="filter-button" type="button" data-filter="income" aria-pressed="false">Deposits</button>
+              <button class="filter-button" type="button" data-filter="expense" aria-pressed="false">Withdrawals</button>
+            </div>
+          </div>
+
+          <ul class="transaction-list" id="transaction-list" aria-live="polite"></ul>
+        </article>
+
+        <aside class="panel">
+          <div class="panel-heading">
+            <h2>This month</h2>
+
+            <button class="export-button" id="export-button" type="button" aria-label="Download transaction history as CSV">
+              <svg width="14" height="14" viewBox="0 0 20 20" aria-hidden="true">
+                <path d="M10 3v9m0 0 3.5-3.5M10 12 6.5 8.5M4 14v2h12v-2"/>
+              </svg>
+              Export
+            </button>
+          </div>
+
+          <ul class="summary-list">
+            <li class="summary-item">
+              <span class="summary-label">Deposits</span>
+              <strong class="summary-value positive" id="monthly-deposits">0 K</strong>
+            </li>
+            <li class="summary-item">
+              <span class="summary-label">Withdrawals</span>
+              <strong class="summary-value" id="monthly-withdrawals">0 K</strong>
+            </li>
+            <li class="summary-item">
+              <span class="summary-label">Transactions</span>
+              <strong class="summary-value" id="transaction-count">0</strong>
+            </li>
+          </ul>
+
+          <div class="account-note">
+            <svg width="16" height="16" viewBox="0 0 20 20" aria-hidden="true">
+              <path d="M10 2.5 16 5v4.3c0 3.7-2.5 6.5-6 8.2-3.5-1.7-6-4.5-6-8.2V5l6-2.5Z"/>
+              <path d="m7.5 9.8 1.7 1.7 3.4-3.6"/>
+            </svg>
+            <span>This is a demo banking dashboard. Transactions are stored only in this page and are not connected to a real bank.</span>
+          </div>
+        </aside>
+      </section>
+    </main>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
